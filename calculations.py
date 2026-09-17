@@ -23,3 +23,8 @@ def compute_monthly_trend(df):
 def compute_category_breakdown(df):
     result = df.groupby("category", as_index=False)["total_amount"].sum()
     return result.sort_values("total_amount", ascending=False).reset_index(drop=True)
+
+
+def compute_region_breakdown(df):
+    result = df.groupby("region", as_index=False)["total_amount"].sum()
+    return result.sort_values("total_amount", ascending=False).reset_index(drop=True)

@@ -79,3 +79,18 @@ def test_compute_category_breakdown_sorted_descending():
 
     assert list(result["category"]) == ["Electronics", "Wearables", "Audio"]
     assert list(result["total_amount"]) == [200.0, 100.0, 80.0]
+
+
+from calculations import compute_region_breakdown
+
+
+def test_compute_region_breakdown_sorted_descending():
+    df = pd.DataFrame({
+        "region": ["North", "South", "North", "East"],
+        "total_amount": [40.0, 90.0, 60.0, 20.0],
+    })
+
+    result = compute_region_breakdown(df)
+
+    assert list(result["region"]) == ["North", "South", "East"]
+    assert list(result["total_amount"]) == [100.0, 90.0, 20.0]
