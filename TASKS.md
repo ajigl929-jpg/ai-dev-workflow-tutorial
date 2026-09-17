@@ -9,9 +9,6 @@ Each milestone moves through To Do -> In Progress -> Done.
 - Changes committed with the milestone ID in the message
 
 ## To Do
-- [ ] **TASK-3: Sales trend chart**
-  - [ ] Line chart of sales over time renders from the data
-  - Commit:
 - [ ] **TASK-4: Category and region breakdowns**
   - [ ] Bar charts for sales by category and by region, sorted by value
   - Commit:
@@ -31,3 +28,7 @@ Each milestone moves through To Do -> In Progress -> Done.
   - [x] Total Sales and Total Orders shown as formatted metrics
   - Commit: 22ee017
   - Notes: clean; values match PRD Expected Output ($116,500.21 total sales, 482 orders)
+- [x] **TASK-3: Sales trend chart**
+  - [x] Line chart of sales over time renders from the data
+  - Commit: a291c54
+  - Notes: clean; used monthly granularity (not daily) since 12 months of daily points would be noisy on an exec dashboard
