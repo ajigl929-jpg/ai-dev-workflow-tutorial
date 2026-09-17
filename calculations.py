@@ -7,3 +7,7 @@ def load_sales_data(path):
 
 def compute_total_sales(df):
     return float(df["total_amount"].sum())
+
+
+def compute_total_orders(df):
+    return int(len(df))

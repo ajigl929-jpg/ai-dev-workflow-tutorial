@@ -36,3 +36,14 @@ def test_compute_total_sales_sums_total_amount_column():
     result = compute_total_sales(df)
 
     assert result == 400.49
+
+
+from calculations import compute_total_orders
+
+
+def test_compute_total_orders_counts_rows():
+    df = pd.DataFrame({"order_id": ["ORD-1", "ORD-2", "ORD-3"]})
+
+    result = compute_total_orders(df)
+
+    assert result == 3
