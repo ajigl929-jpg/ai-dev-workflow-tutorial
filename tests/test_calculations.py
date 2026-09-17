@@ -64,3 +64,18 @@ def test_compute_monthly_trend_groups_by_calendar_month():
         pd.Timestamp("2024-01-01"), pd.Timestamp("2024-02-01"),
     ]
     assert list(result["total_amount"]) == [150.0, 75.0]
+
+
+from calculations import compute_category_breakdown
+
+
+def test_compute_category_breakdown_sorted_descending():
+    df = pd.DataFrame({
+        "category": ["Audio", "Electronics", "Audio", "Wearables"],
+        "total_amount": [50.0, 200.0, 30.0, 100.0],
+    })
+
+    result = compute_category_breakdown(df)
+
+    assert list(result["category"]) == ["Electronics", "Wearables", "Audio"]
+    assert list(result["total_amount"]) == [200.0, 100.0, 80.0]

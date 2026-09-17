@@ -18,3 +18,8 @@ def compute_monthly_trend(df):
     trend["month"] = trend["date"].dt.to_period("M").dt.to_timestamp()
     result = trend.groupby("month", as_index=False)["total_amount"].sum()
     return result.sort_values("month").reset_index(drop=True)
+
+
+def compute_category_breakdown(df):
+    result = df.groupby("category", as_index=False)["total_amount"].sum()
+    return result.sort_values("total_amount", ascending=False).reset_index(drop=True)
