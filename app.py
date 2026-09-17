@@ -2,7 +2,9 @@ import plotly.express as px
 import streamlit as st
 
 from calculations import (
+    compute_category_breakdown,
     compute_monthly_trend,
+    compute_region_breakdown,
     compute_total_orders,
     compute_total_sales,
     load_sales_data,
@@ -30,3 +32,23 @@ fig_trend = px.line(
     labels={"month": "Month", "total_amount": "Sales ($)"},
 )
 st.plotly_chart(fig_trend, use_container_width=True)
+
+col3, col4 = st.columns(2)
+
+with col3:
+    st.subheader("Sales by Category")
+    category = compute_category_breakdown(df)
+    fig_category = px.bar(
+        category, x="category", y="total_amount",
+        labels={"category": "Category", "total_amount": "Sales ($)"},
+    )
+    st.plotly_chart(fig_category, use_container_width=True)
+
+with col4:
+    st.subheader("Sales by Region")
+    region = compute_region_breakdown(df)
+    fig_region = px.bar(
+        region, x="region", y="total_amount",
+        labels={"region": "Region", "total_amount": "Sales ($)"},
+    )
+    st.plotly_chart(fig_region, use_container_width=True)
