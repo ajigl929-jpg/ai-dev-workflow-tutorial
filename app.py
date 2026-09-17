@@ -1,6 +1,6 @@
 import streamlit as st
 
-from calculations import load_sales_data
+from calculations import compute_total_orders, compute_total_sales, load_sales_data
 
 DATA_PATH = "data/sales-data.csv"
 
@@ -12,3 +12,7 @@ try:
 except FileNotFoundError:
     st.error(f"Could not find the sales data file at `{DATA_PATH}`.")
     st.stop()
+
+col1, col2 = st.columns(2)
+col1.metric("Total Sales", f"${compute_total_sales(df):,.0f}")
+col2.metric("Total Orders", f"{compute_total_orders(df):,}")
