@@ -25,3 +25,14 @@ def test_load_sales_data_returns_dataframe_with_expected_columns(tmp_path):
 def test_load_sales_data_missing_file_raises_file_not_found_error():
     with pytest.raises(FileNotFoundError):
         load_sales_data("data/does-not-exist.csv")
+
+
+from calculations import compute_total_sales
+
+
+def test_compute_total_sales_sums_total_amount_column():
+    df = pd.DataFrame({"total_amount": [100.0, 250.50, 49.99]})
+
+    result = compute_total_sales(df)
+
+    assert result == 400.49
