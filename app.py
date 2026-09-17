@@ -1,6 +1,12 @@
+import plotly.express as px
 import streamlit as st
 
-from calculations import compute_total_orders, compute_total_sales, load_sales_data
+from calculations import (
+    compute_monthly_trend,
+    compute_total_orders,
+    compute_total_sales,
+    load_sales_data,
+)
 
 DATA_PATH = "data/sales-data.csv"
 
@@ -16,3 +22,11 @@ except FileNotFoundError:
 col1, col2 = st.columns(2)
 col1.metric("Total Sales", f"${compute_total_sales(df):,.0f}")
 col2.metric("Total Orders", f"{compute_total_orders(df):,}")
+
+st.subheader("Sales Trend Over Time")
+trend = compute_monthly_trend(df)
+fig_trend = px.line(
+    trend, x="month", y="total_amount", markers=True,
+    labels={"month": "Month", "total_amount": "Sales ($)"},
+)
+st.plotly_chart(fig_trend, use_container_width=True)
