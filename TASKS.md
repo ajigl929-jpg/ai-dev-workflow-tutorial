@@ -9,9 +9,6 @@ Each milestone moves through To Do -> In Progress -> Done.
 - Changes committed with the milestone ID in the message
 
 ## To Do
-- [ ] **TASK-5: Test and deploy**
-  - [ ] Dashboard runs without errors and is deployed to a public URL
-  - Commit:
 
 ## In Progress
 
@@ -33,3 +30,7 @@ Each milestone moves through To Do -> In Progress -> Done.
   - [x] Bar charts for sales by category and by region, sorted by value
   - Commit: f2d66bd
   - Notes: caught a math error in my own region-breakdown test fixture while running it (expected sort order was wrong); fixed the assertion before committing
+- [x] **TASK-5: Test and deploy**
+  - [x] Dashboard runs without errors and is deployed to a public URL
+  - Commit: afbfc28
+  - Notes: clean; code review fixes (error handling, groupby dedupe, test import cleanup) applied before merge. Live at https://ai-dev-workflow-tutorial-hezfrv3waqht94epnocfy8.streamlit.app
