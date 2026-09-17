@@ -47,3 +47,20 @@ def test_compute_total_orders_counts_rows():
     result = compute_total_orders(df)
 
     assert result == 3
+
+
+from calculations import compute_monthly_trend
+
+
+def test_compute_monthly_trend_groups_by_calendar_month():
+    df = pd.DataFrame({
+        "date": pd.to_datetime(["2024-01-03", "2024-01-20", "2024-02-05"]),
+        "total_amount": [100.0, 50.0, 75.0],
+    })
+
+    result = compute_monthly_trend(df)
+
+    assert list(result["month"]) == [
+        pd.Timestamp("2024-01-01"), pd.Timestamp("2024-02-01"),
+    ]
+    assert list(result["total_amount"]) == [150.0, 75.0]
