@@ -20,6 +20,9 @@ try:
 except FileNotFoundError:
     st.error(f"Could not find the sales data file at `{DATA_PATH}`.")
     st.stop()
+except Exception:
+    st.error(f"Could not read the sales data file at `{DATA_PATH}`.")
+    st.stop()
 
 col1, col2 = st.columns(2)
 col1.metric("Total Sales", f"${compute_total_sales(df):,.0f}")

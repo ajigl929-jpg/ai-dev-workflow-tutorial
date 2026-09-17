@@ -1,7 +1,14 @@
 import pandas as pd
 import pytest
 
-from calculations import load_sales_data
+from calculations import (
+    compute_category_breakdown,
+    compute_monthly_trend,
+    compute_region_breakdown,
+    compute_total_orders,
+    compute_total_sales,
+    load_sales_data,
+)
 
 
 def test_load_sales_data_returns_dataframe_with_expected_columns(tmp_path):
@@ -27,9 +34,6 @@ def test_load_sales_data_missing_file_raises_file_not_found_error():
         load_sales_data("data/does-not-exist.csv")
 
 
-from calculations import compute_total_sales
-
-
 def test_compute_total_sales_sums_total_amount_column():
     df = pd.DataFrame({"total_amount": [100.0, 250.50, 49.99]})
 
@@ -38,18 +42,12 @@ def test_compute_total_sales_sums_total_amount_column():
     assert result == 400.49
 
 
-from calculations import compute_total_orders
-
-
 def test_compute_total_orders_counts_rows():
     df = pd.DataFrame({"order_id": ["ORD-1", "ORD-2", "ORD-3"]})
 
     result = compute_total_orders(df)
 
     assert result == 3
-
-
-from calculations import compute_monthly_trend
 
 
 def test_compute_monthly_trend_groups_by_calendar_month():
@@ -66,9 +64,6 @@ def test_compute_monthly_trend_groups_by_calendar_month():
     assert list(result["total_amount"]) == [150.0, 75.0]
 
 
-from calculations import compute_category_breakdown
-
-
 def test_compute_category_breakdown_sorted_descending():
     df = pd.DataFrame({
         "category": ["Audio", "Electronics", "Audio", "Wearables"],
@@ -79,9 +74,6 @@ def test_compute_category_breakdown_sorted_descending():
 
     assert list(result["category"]) == ["Electronics", "Wearables", "Audio"]
     assert list(result["total_amount"]) == [200.0, 100.0, 80.0]
-
-
-from calculations import compute_region_breakdown
 
 
 def test_compute_region_breakdown_sorted_descending():
