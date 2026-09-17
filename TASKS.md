@@ -9,9 +9,6 @@ Each milestone moves through To Do -> In Progress -> Done.
 - Changes committed with the milestone ID in the message
 
 ## To Do
-- [ ] **TASK-4: Category and region breakdowns**
-  - [ ] Bar charts for sales by category and by region, sorted by value
-  - Commit:
 - [ ] **TASK-5: Test and deploy**
   - [ ] Dashboard runs without errors and is deployed to a public URL
   - Commit:
@@ -32,3 +29,7 @@ Each milestone moves through To Do -> In Progress -> Done.
   - [x] Line chart of sales over time renders from the data
   - Commit: a291c54
   - Notes: clean; used monthly granularity (not daily) since 12 months of daily points would be noisy on an exec dashboard
+- [x] **TASK-4: Category and region breakdowns**
+  - [x] Bar charts for sales by category and by region, sorted by value
+  - Commit: f2d66bd
+  - Notes: caught a math error in my own region-breakdown test fixture while running it (expected sort order was wrong); fixed the assertion before committing
