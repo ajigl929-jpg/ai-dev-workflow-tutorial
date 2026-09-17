@@ -9,9 +9,6 @@ Each milestone moves through To Do -> In Progress -> Done.
 - Changes committed with the milestone ID in the message
 
 ## To Do
-- [ ] **TASK-2: KPI scorecards**
-  - [ ] Total Sales and Total Orders shown as formatted metrics
-  - Commit:
 - [ ] **TASK-3: Sales trend chart**
   - [ ] Line chart of sales over time renders from the data
   - Commit:
@@ -30,3 +27,7 @@ Each milestone moves through To Do -> In Progress -> Done.
   - [x] Loads `data/sales-data.csv`; handles a missing file cleanly
   - Commit: 0038f15
   - Notes: clean
+- [x] **TASK-2: KPI scorecards**
+  - [x] Total Sales and Total Orders shown as formatted metrics
+  - Commit: 22ee017
+  - Notes: clean; values match PRD Expected Output ($116,500.21 total sales, 482 orders)
